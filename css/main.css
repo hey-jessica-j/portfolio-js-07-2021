@@ -190,7 +190,7 @@ header {
 
 .header-text h2 {
   font-family: 'Neucha', cursive;
-  font-size: 2.5em;
+  font-size: 2.25em;
   margin: 50px;
   letter-spacing: 5px;
 }
@@ -259,8 +259,8 @@ main h2 {
   font-family: 'Neucha', cursive;
   padding: 10px;
   font-size: 1.5em;
-  margin: 75px;
-  width: fit-content;
+  margin: 75px auto;
+  width: 30%;
 }
 
 .school-title,
@@ -280,6 +280,21 @@ main h2 {
   display: flex;
   flex-wrap: no-wrap;
   align-items: center;
+}
+
+.language-article{
+  margin: 10px auto;
+}
+.bar{
+  margin: 10px;
+}
+
+.language-text {
+  text-align: right;
+  align-items: center;
+  margin: auto;
+  padding: 20px;
+  color: white;
 }
 
 /* Work */

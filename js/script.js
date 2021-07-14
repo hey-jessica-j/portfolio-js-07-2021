@@ -46,15 +46,15 @@ let  workData = [
 ];
 
 let  languagesData = [
-    {language: "HTML5", percentage: 100},
-    {language: "CSS3", percentage: 100},
-    {language: "Javascript", percentage: 85},
-    {language: "Python", percentage: 79},
-    {language: "React", percentage: 40},
-    {language: "C++", percentage: 30}
+    {language: "HTML5", color:"#FF3366", percentage: 85},
+    {language: "CSS3", color: "#D68FD6", percentage: 80},
+    {language: "Javascript", color:"#FF3366", percentage: 75},
+    {language: "React", color:"#00ff00", percentage: 40},
+    {language: "Python", color:"#388697",  percentage: 69},
+    {language: "C++", color:"#388697", percentage: 30}
 ];
 
-let skillsData = ["Linux", "Windows", "Github", "REST API", "JSON", "Burpsuite", "Dir BUster", "WIreshark", "MS Office", "Photoshop", "Adobe Illustator", "Teamplayer", "Communication", "Determination", "Self-starter", "Critical-Thinker", "Detail-Oriented"];
+let skillData = ["Linux", "Windows", "Github", "REST API", "JSON", "Burpsuite", "Dir BUster", "WIreshark", "MS Office", "Photoshop", "Adobe Illustator", "Teamplayer", "Communication", "Determination", "Self-starter", "Critical-Thinker", "Detail-Oriented"];
 
 let myWorkData = {}
 
@@ -226,8 +226,9 @@ function addSchoolResumeInfo(schoolData, element) {
   i++;
   };
 };
-
 addSchoolResumeInfo(schoolData, resumeContentSection);
+
+
 
 // Adds work info to document
 function addWorkResumeInfo(workData, element) {
@@ -260,12 +261,41 @@ function addWorkResumeInfo(workData, element) {
   i++;
   };
 };
-
 addWorkResumeInfo(workData, resumeContentSection);
+
 
 
 //Adds skill info to document
 
+function addLaguagesResumeInfo(languagesData, element) {
+  let i=0;
+  let title = document.createElement("div");
+  title.classList.add("job-title");
+  title.innerHTML = '<h2 class="underline">Languages</h2>';
+  element.append(title);
+  while ( i < languagesData.length) {
+    let article = document.createElement("article");
+    let language = languagesData[i].language;
+    let percentage = languagesData[i].percentage;
+    let color = languagesData[i].color;
+    article.innerHTML =
+    `
+    <div class="language-article">
+      <div style="width: ${percentage}%; background-color: ${color} ">
+        <p class="language-text">${language}</p>
+        </div>
+    </div>
+    `;
+  element.append(article);
+  i++;
+  };
+};
+
+addLaguagesResumeInfo(languagesData, resumeContentSection);
+
+
+
+//Shows the resume info on Click/hides on hide
 function toggleShowResume(element) {
   if (element.classList.contains("hide") == true) {
     text = "Hide Resume";
