@@ -1,0 +1,298 @@
+/*
+Avaliable Fonts -
+font-family: 'Architects Daughter', cursive;
+font-family: 'Orbitron', sans-serif;
+font-family: 'Yomogi', cursive;
+
+font-family: 'Cabin Sketch', cursive;
+font-family: 'Neucha', cursive;
+
+titles -
+  font-family: 'Cabin Sketch', cursive;
+  colors:
+    about- color: #00ff00;
+    resume- color: #FF3366;
+    work- color: #D68FD6;
+    contact- color: #388697;
+
+main text -
+  font-family: 'Neucha', cursive;
+  color: blak;
+
+*/
+
+
+
+
+
+/******************************************/
+/*************  Animations ****************/
+/******************************************/
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    }
+}
+
+.reveal {
+  animation: reveal 5s;
+  animation-delay: 5s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+@keyframes blink {
+    0% {opacity: 0;}
+    40% {opacity: 0;}
+    60% {opacity: 1;}
+    100% {opacity: 1;}
+  }
+
+/******************************************/
+/*************   General   ****************/
+/******************************************/
+.hide {
+  display: none;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  overflow: scroll;
+  margin: 0;
+  background-color: black;
+}
+
+main {
+  margin: 0;
+  background-color: white;
+}
+
+.center {
+  text-align: center;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.col {
+  display: flex column no-wrap;
+}
+
+.row {
+  display: flex row no-wrap;
+}
+
+.hundred {
+  width: 100%;
+}
+
+.one-fourth {
+  width: 25%;
+}
+
+.one-third {
+  width: 33%;
+}
+
+.one-half {
+  width: 50%;
+}
+
+.three-fourth {
+  width: 75%;
+}
+
+/*************************************************/
+/*************   Header / Footer  ****************/
+/*************************************************/
+
+#matrix {
+  width: 99%;
+  height: 90vh;
+  margin: -15% 0 0 0;
+}
+
+header {
+  height: 100vh;
+  color: white;
+  background-color: black;
+}
+
+nav {
+  width: 70%;
+  margin-left: 10%
+
+}
+
+nav ul {
+  list-style-type: none;
+  text-align: right;
+  width: 100%;
+  margin: 0 20% 0 0;
+}
+
+nav li {
+  display: inline;
+  font-size: 1em;
+  font-family: 'Neucha', cursive;
+  margin-bottom: 50px;
+  padding: 25px;
+}
+
+.header-wrapper {
+
+  overflow: hidden;
+}
+
+.header-text {
+  text-align: left;
+  background-color: black;
+  color: white;
+  padding: 0 50px;
+}
+
+.header-text h1 {
+  font-family: 'Cabin Sketch', cursive;
+  font-size: 4em;
+  margin: 0;
+}
+
+.header-text h2 {
+  font-family: 'Neucha', cursive;
+  font-size: 2em;
+  margin: 0;
+}
+
+.input-cursor {
+ display: inline-block;
+ width: 2px;
+ height: 1em;
+ background-color: white;
+ margin-left: 8px;
+ animation: blink .6s linear infinite alternate;
+}
+
+/******************************************/
+/**************    Main    ****************/
+/******************************************/
+main section{
+  min-height: 100vh;
+  width: 100%;
+  font-family: 'Neucha', cursive;
+  font-size: 1em;
+}
+
+main h1{
+  font-family: 'Cabin Sketch', cursive;
+  font-size: 3em;
+}
+
+/* About */
+#about-section {
+  background-color: #666666;
+}
+
+/* Resume */
+#resume-section {
+  display: flex row;
+  flex-wrap: no-wrap;
+  align-items: flex-start;
+  margin: auto;
+  width: 90%;
+  justify-content: space-between;
+}
+
+#resume-section h1,
+#resume-section h2 {
+  color: #FF3366;
+  text-decoration: underline;
+}
+
+#resume-section span {
+  background-color: #00ff00;
+}
+
+.school-title,
+.job-title {
+  display: flex;
+  flex-wrap: no-wrap;
+  font-family: 'Cabin Sketch', cursive;
+  font-size: 1em;
+}
+
+.school-article {
+  display: flex;
+  flex: row wrap;
+}
+
+.job-article {
+  display: flex;
+  flex-wrap: no-wrap;
+  align-items: center;
+}
+
+/* Work */
+
+
+
+/* Contact */
+
+
+
+
+/******************************************/
+/**************    Tablet   ***************/
+/******************************************/
+
+@media only screen and (min-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+
+
+}
+
+
+/******************************************/
+/**************   Desktop  ****************/
+/******************************************/
+
+
+@media only screen and (min-width: 1200px) {
+  body {
+    font-size: 42px;
+  }
+
+
+/******* Header *********
+  nav li {
+    font-size: 2em;
+  }
+
+  .header-text h1 {
+    font-size: 8em;
+  }
+
+  .header-text h2 {
+    font-size: 4em;
+  }
+
+  /********************************/
+  /*             Main             */
+  /********************************
+  main section {
+    font-size: 2em;
+  }
+  /************ Resume ************/
+
+
+
+
+}
