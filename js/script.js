@@ -6,6 +6,8 @@ let matrix = document.getElementById("matrix");
 let changingText = document.querySelector(".changing-text");
 let aboutSection = document.getElementById("about-section");
 let resumeSection = document.getElementById("resume-section");
+let resumeShowButton = document.getElementById("resumeContentButton");
+let resumeContentSection = document.querySelector(".resume-content");
 let workSection = document.getElementById("work-section");
 
 // ------------------------------
@@ -87,7 +89,21 @@ function mobilePhone() {
 };
 mobilePhone();
 
-//
+//updates Elements innerText
+function updateText(element, text) {
+  element.innerText = text;
+}
+
+//Click to reveal a Section
+function toggleShow(element) {
+  if (element.classList.contains("hide") == true) {
+    element.classList.remove("hide")
+  }
+  else {
+    element.classList.add("hide")
+  }
+};
+
 
 // ----------------------------------------------------------------
 // ----------------------------------------------------------------
@@ -166,16 +182,15 @@ const sentenceCarousel = async function (carouselList, element) {
 sentenceCarousel(carousel, changingText);
 
 // -------------------------------
-//             Navigation
+//
 // -------------------------------
 
-const navigation = function(section) {
 
-};
+
 
 
 // -------------------------------
-//             Soft Scroll
+//
 // -------------------------------
 
 
@@ -212,7 +227,7 @@ function addSchoolResumeInfo(schoolData, element) {
   };
 };
 
-addSchoolResumeInfo(schoolData, resumeSection);
+addSchoolResumeInfo(schoolData, resumeContentSection);
 
 // Adds work info to document
 function addWorkResumeInfo(workData, element) {
@@ -246,9 +261,19 @@ function addWorkResumeInfo(workData, element) {
   };
 };
 
-addWorkResumeInfo(workData, resumeSection);
+addWorkResumeInfo(workData, resumeContentSection);
+
 
 //Adds skill info to document
-function addSkillsResumeInfo() {
 
+function toggleShowResume(element) {
+  if (element.classList.contains("hide") == true) {
+    text = "Hide Resume";
+    element.classList.remove("hide");
+  }
+  else {
+    text = "Show Resume";
+    element.classList.add("hide");
+  }
+  updateText(resumeShowButton, text)
 };
