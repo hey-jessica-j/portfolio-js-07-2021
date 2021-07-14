@@ -180,11 +180,12 @@ header {
   background-color: black;
   color: white;
   padding: 0 50px;
+  margin: 70% auto;
 }
 
 .header-text h1 {
   font-family: 'Cabin Sketch', cursive;
-  font-size: 5em;
+  font-size: 4em;
   margin: 0;
 }
 
@@ -211,7 +212,7 @@ main section{
   min-height: 32vh;
   width: 100%;
   font-family: 'Neucha', cursive;
-  font-size: 1em;
+  font-size: 1.1em;
 
 }
 
@@ -286,11 +287,13 @@ main h2 {
   margin: 10px auto;
 }
 .bar{
-  margin: 10px;
+  margin: 15px auto;
 }
 
 .language-text {
   text-align: right;
+  font-weight: bolder;
+  letter-spacing: 5px;
   align-items: center;
   margin: auto;
   padding: 20px;
@@ -318,7 +321,13 @@ main h2 {
   }
 
   /******* Header *********/
+  #matrix {
+    height: 60vh;
+  }
 
+  .header-text {
+    margin: auto;
+  }
 
   /********************************/
   /*             Main             */
@@ -343,12 +352,14 @@ main h2 {
 
 @media only screen and (min-width: 1200px) {
   body {
-    font-size: 24px;
+    font-size: 28px;
   }
 
 
 /******* Header *********/
-
+#matrix {
+  height: 87vh;
+}
 
 /********************************/
 /*             Main             */
