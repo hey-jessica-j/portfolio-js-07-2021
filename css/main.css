@@ -17,13 +17,9 @@ titles -
 
 main text -
   font-family: 'Neucha', cursive;
-  color: blak;
+  color: black;
 
 */
-
-
-
-
 
 /******************************************/
 /*************  Animations ****************/
@@ -57,6 +53,10 @@ main text -
 /******************************************/
 .hide {
   display: none;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -109,6 +109,52 @@ main {
   width: 75%;
 }
 
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+.sticky + main {
+
+
+}
+
+/*************************************************/
+/*************     Navigation     ****************/
+/*************************************************/
+
+nav {
+  background: rgb(0,0,0,0.55);
+  width: 100%;
+  color: white;
+}
+
+nav ul {
+  list-style-type: none;
+  text-align: center;
+  margin: 10px auto;
+}
+
+nav li {
+  display: inline;
+  font-size: 1em;
+  font-family: 'Neucha', cursive;
+  padding: 10px 25px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+}
+
+nav a::after {
+  color: white;
+}
+
+nav a:hover{
+  background-color: #00ff00;
+}
+
 /*************************************************/
 /*************   Header / Footer  ****************/
 /*************************************************/
@@ -123,27 +169,6 @@ header {
   height: 100vh;
   color: white;
   background-color: black;
-}
-
-nav {
-  width: 70%;
-  margin-left: 10%
-
-}
-
-nav ul {
-  list-style-type: none;
-  text-align: right;
-  width: 100%;
-  margin: 0 20% 0 0;
-}
-
-nav li {
-  display: inline;
-  font-size: 1em;
-  font-family: 'Neucha', cursive;
-  margin-bottom: 50px;
-  padding: 25px;
 }
 
 .header-wrapper {
@@ -187,11 +212,18 @@ main section{
   width: 100%;
   font-family: 'Neucha', cursive;
   font-size: 1em;
+
 }
 
-main h1{
+main h1 {
   font-family: 'Cabin Sketch', cursive;
-  font-size: 3em;
+  font-size: 2.5em;
+  margin: 25px;
+  padding-top: 100px;
+}
+
+main h2 {
+  font-size: 1.5em;
 }
 
 /* About */
@@ -205,14 +237,13 @@ main h1{
   flex-wrap: no-wrap;
   align-items: flex-start;
   margin: auto;
-  width: 90%;
+  width: 80%;
   justify-content: space-between;
 }
 
 #resume-section h1,
 #resume-section h2 {
   color: #FF3366;
-  text-decoration: underline;
 }
 
 #resume-section span {
@@ -267,30 +298,18 @@ main h1{
 
 @media only screen and (min-width: 1200px) {
   body {
-    font-size: 42px;
+    font-size: 24px;
   }
 
 
-/******* Header *********
-  nav li {
-    font-size: 2em;
-  }
+/******* Header *********/
 
-  .header-text h1 {
-    font-size: 8em;
-  }
 
-  .header-text h2 {
-    font-size: 4em;
-  }
+/********************************/
+/*             Main             */
+/********************************/
 
-  /********************************/
-  /*             Main             */
-  /********************************
-  main section {
-    font-size: 2em;
-  }
-  /************ Resume ************/
+/************ Resume ************/
 
 
 

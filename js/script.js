@@ -39,7 +39,7 @@ let schoolData = [
 
 let  workData = [
   {title:"Morgan Stanley", date:"07/2017 - Present",
-  description: ["Started a <span>CTF beginners blog</span> via the Baltimore Women in Technology group with other CTF enthusiasts.", "Reviewed client verification documents quickly while maintaining an average of 99% quality.", "Conduct reports for managers to audit accounts and assign validation points. <span>Worked with branches</span> to understand their needs and submit those needs to the correct parties to get solutions."
+  description: ["Started a <span>CTF (Capture the Flag) beginners blog</span> via the Baltimore Women in Technology group with other CTF enthusiasts.", "Reviewed client verification documents quickly while maintaining an average of 99% quality.", "Conduct reports for managers to audit accounts and assign validation points. <span>Worked with branches</span> to understand their needs and submit those needs to the correct parties to get solutions."
     ]}
 ];
 
@@ -65,9 +65,6 @@ let carousel = [
   {text: "Web Security Enthusiast.", color:"#D68FD6", fontFamily: "'Orbitron', sans-serif"},
   {text: "Math tutor.", color:"#388697", fontFamily: "'Yomogi', cursive"}
 ];
-
-//
-
 
 // ------------------------------
 //            Helper Funtions
@@ -192,7 +189,7 @@ function addSchoolResumeInfo(schoolData, element) {
   let title = document.createElement("div");
   let hr = document.createElement("hr");
   title.classList.add("school-title");
-  title.innerHTML = "<h2>Education</h2>";
+  title.innerHTML = '<h2 class="underline">Education</h2>';
   element.append(title);
   element.append(hr);
   while ( i < schoolData.length) {
@@ -223,7 +220,7 @@ function addWorkResumeInfo(workData, element) {
   let j=0;
   let title = document.createElement("div");
   title.classList.add("job-title");
-  title.innerHTML = "<h2>Work Eperience</h2>";
+  title.innerHTML = '<h2 class="underline">Work Eperience</h2>';
   element.append(title);
 
   while ( i < workData.length) {
