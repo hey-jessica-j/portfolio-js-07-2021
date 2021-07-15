@@ -36,9 +36,26 @@ main text -
 
 .reveal {
   animation: reveal 5s;
-  animation-delay: 5s;
+  animation-delay: 3s;
   animation-fill-mode: forwards;
   opacity: 0;
+}
+
+@keyframes colorRotate {
+  from {color: white; font-size: 4em}
+  12% {color:red}
+  24% {color: orange;}
+  36% {color: yellow;}
+  48% {color: green; font-size: 4.3em}
+  60% {color: blue;}
+  72% {color: indigo;}
+  84% {color: violet;}
+  96% {color: red;}
+  100% {color: white; font-size: 4em }
+}
+
+.wave h1:hover {
+  animation: colorRotate 5s infinite;
 }
 
 @keyframes blink {
@@ -47,6 +64,31 @@ main text -
     60% {opacity: 1;}
     100% {opacity: 1;}
   }
+
+@keyframes spin {
+      0% {
+        transform: rotate(0deg);  }
+      100% {
+        transform: rotate(360deg); }
+    }
+
+.about-content img:hover {
+  animation: spin 3s;
+}
+
+@keyframes slide {
+  0% {transform: translate(0, 0);}
+  100% { transform: translate(15%, 0%);}
+}
+
+.language-article div:hover {
+  animation: slide .75s;
+}
+
+
+
+
+
 
 /******************************************/
 /*************   General   ****************/
@@ -73,8 +115,16 @@ main {
   background-color: white;
 }
 
+.left {
+  text-align: left;
+}
+
 .center {
   text-align: center;
+}
+
+.right {
+  text-align: right;
 }
 
 .underline {
@@ -94,19 +144,19 @@ main {
 }
 
 .one-fourth {
-  width: 25%;
+  width: 22%;
 }
 
 .one-third {
-  width: 33%;
+  width: 30%;
 }
 
 .one-half {
-  width: 50%;
+  width: 48%;
 }
 
 .three-fourth {
-  width: 75%;
+  width: 73%;
 }
 
 .sticky {
@@ -212,7 +262,7 @@ main section{
   min-height: 32vh;
   width: 100%;
   font-family: 'Neucha', cursive;
-  font-size: 1.1em;
+  font-size: 1em;
 
 }
 
@@ -230,7 +280,35 @@ main h2 {
 /* About */
 #about-section {
   background-color: #666666;
+  display: flex row;
+  flex-wrap: no-wrap;
+  align-items: flex-start;
+  margin: auto;
+  min-height: 100vh;
 }
+
+#about-section h1,
+#about-section h2 {
+  color: #00ff00;
+}
+
+.about-content {
+  display: flex;
+  flex: row wrap;
+  width: 80%;
+  align-items: center;
+  margin: auto;
+  padding: auto 50px;
+  height: 70vh;
+  color: white;
+  line-height: 1.5;
+}
+
+.about-content img {
+  width: 75%;
+  margin: 50px;
+}
+
 
 /* Resume */
 #resume-section {
@@ -259,7 +337,7 @@ main h2 {
   background-color: #FF3366;
   font-family: 'Neucha', cursive;
   padding: 10px;
-  font-size: 1.5em;
+  font-size: 1.2em;
   margin: 75px auto;
   width: 30%;
 }
@@ -277,10 +355,18 @@ main h2 {
   flex: row wrap;
 }
 
+.school-data {
+  margin: auto 25px;
+}
+
 .job-article {
   display: flex;
   flex-wrap: no-wrap;
   align-items: center;
+}
+
+.job-article li {
+  list-style: square;
 }
 
 .language-article{
@@ -333,6 +419,10 @@ main h2 {
   /*             Main             */
   /********************************/
 
+
+  /************  About  ************/
+
+
   /************ Resume ************/
 
   #resume-section {
@@ -352,7 +442,7 @@ main h2 {
 
 @media only screen and (min-width: 1200px) {
   body {
-    font-size: 28px;
+    font-size: 26px;
   }
 
 
@@ -364,6 +454,9 @@ main h2 {
 /********************************/
 /*             Main             */
 /********************************/
+
+
+/************ About ************/
 
 /************ Resume ************/
 
