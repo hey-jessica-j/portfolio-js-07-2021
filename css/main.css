@@ -215,7 +215,6 @@ nav li {
 nav a {
   text-decoration: none;
   color: white;
-
 }
 
 nav a::after {
@@ -434,13 +433,49 @@ main h2 {
 /* Work */
 
 #work-section {
-
+  width: 90%;
 }
 
 #work-section h1 {
   color: #D68FD6;
 }
 
+.work-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.repos input {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 50%;
+  border: black 1px solid;
+  text-align:center;
+  margin: auto;
+  padding: 25px;
+  font-size: 1em;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.work-list li {
+  width: 25%;
+  margin: 1em 20px;
+  border: 1px solid #D68FD6;
+  border-radius: 5px 40px 5px;
+  padding: 0.2em;
+  list-style-type: none;
+  text-align: center;
+}
+
+
+.work-list li:hover {
+    background-color: #D68FD6;
+    animation: colorRotate 3s infinite;
+}
 
 /* Contact */
 
@@ -454,55 +489,41 @@ main h2 {
 /******************************************/
 
 @media only screen and (min-width: 767px) {
-  body {
-    font-size: 16px;
-  }
-
-  /******* Header *********/
-  #matrix {
-    height: 60vh;
-  }
-
-  .header-text {
-    margin: auto;
-  }
-
-  /********************************/
-  /*             Main             */
-  /********************************/
-
-
-  /************  About  ************/
-
-  #about-section {
-
+    body {
+      font-size: 16px;
     }
 
-    .about-content {
-      display: flex;
-      flex: row wrap;
-      min
-
+    /******* Header *********/
+    #matrix {
+      height: 60vh;
     }
 
-    .about-content img {
-
+    .header-text {
+      margin: auto;
     }
 
-    .about-text {
-      text-align: left;
-      width: 90%
-    }
+    /********************************/
+    /*             Main             */
+    /********************************/
 
 
-  /************ Resume ************/
+    /************  About  ************/
 
-  #resume-section {
-    width: 80%;
+      .about-content {
+        display: flex;
+        flex: row wrap;
+      }
 
-  }
+      .about-text {
+        text-align: left;
+        width: 90%
+      }
 
 
+    /************ Resume ************/
+
+    #resume-section {
+      width: 80%;
 
 }
 
@@ -513,30 +534,30 @@ main h2 {
 
 
 @media only screen and (min-width: 1200px) {
-  body {
-    font-size: 26px;
-  }
+    body {
+      font-size: 26px;
+    }
 
 
-/******* Header *********/
-#matrix {
-  height: 87vh;
-}
+    /******* Header *********/
+    #matrix {
+      height: 87vh;
+    }
 
-/********************************/
-/*             Main             */
-/********************************/
-
-
-/************ About ************/
+    /********************************/
+    /*             Main             */
+    /********************************/
 
 
-/************ Resume ************/
+    /************ About ************/
 
-#resume-section {
-  width: 50%;
 
-}
+    /************ Resume ************/
+
+    #resume-section {
+      width: 50%;
+
+    }
 
 
 

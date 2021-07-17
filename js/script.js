@@ -2,13 +2,18 @@
 //           Document Elements
 // ------------------------------
 
-let matrix = document.getElementById("matrix");
-let changingText = document.querySelector(".changing-text");
-let aboutSection = document.getElementById("about-section");
-let resumeSection = document.getElementById("resume-section");
-let resumeShowButton = document.getElementById("resumeContentButton");
-let resumeContentSection = document.querySelector(".resume-content");
-let workSection = document.getElementById("work-section");
+const matrix = document.getElementById("matrix");
+const changingText = document.querySelector(".changing-text");
+const aboutSection = document.getElementById("about-section");
+const resumeSection = document.getElementById("resume-section");
+const resumeShowButton = document.getElementById("resumeContentButton");
+const resumeContentSection = document.querySelector(".resume-content");
+const workSection = document.getElementById("work-section");
+const workListElement = document.querySelector(".work-list");
+const repoElement = document.querySelector(".repos");
+const repoDataElement = document.querySelector(".repo-data");
+const backRepoButton = document.querySelector(".view-repos");
+const filterInput = document.querySelector(".filter-repos");
 
 // ------------------------------
 //          Data Sets - that can be changed
@@ -345,7 +350,6 @@ function addSkillsResumeInfo(skillData, element) {
 addSkillsResumeInfo(skillData, resumeContentSection);
 
 
-
 //Shows the resume info on Click/hides on hide
 function toggleShowResume(element) {
   if (element.classList.contains("hide") == true) {
@@ -358,3 +362,102 @@ function toggleShowResume(element) {
   }
   updateText(resumeShowButton, text)
 };
+
+
+// -------------------------------
+//             RMy Work Section
+// -------------------------------
+
+//Fetch and display user data
+const githubRepoData = async function() {
+  const fetchRepos = await fetch(`https://api.github.com/users/${socialMediaData.github.link}/repos?sort=updates&per_page=100`);
+  const repoData = await fetchRepos.json();
+  //console.log(repoData);
+  displayRepoData(repoData, workListElement);
+};
+
+githubRepoData();
+
+const displayRepoData = async function (repos, ulElement) {
+  filterInput.classList.remove("hide");
+  for (repo of repos) {
+    const li = document.createElement("li");
+    li.classList.add("repo");
+    li.innerHTML = `<h3>${repo.name}</h3>`;
+    ulElement.append(li);
+  }
+};
+
+//fetches data of repo on click
+workListElement.addEventListener("click", function(e) {
+  if (e.target.matches("h3")) {
+    const repoName = e.target.innerText;
+    repoData(repoName);
+    console.log(repoName);
+  }
+});
+
+const repoData = async function(repoName) {
+  const fetchRepoData = await fetch(`https://api.github.com/repos/${socialMediaData.github.link}/${repoName}`);
+  const repoInfo = await fetchRepoData.json();
+  const fetchLanguages = await fetch(repoInfo.languages_url);
+  const languageData = await fetchLanguages.json();
+//Gets languages used
+  const languages = [];
+  for (const lang in languageData) {
+    languages.push(lang);
+  };
+//Getpages URL
+  const pages = repoInfo.has_pages;
+    displayRepoInfo(repoInfo, languages, pages);
+};
+
+const displayRepoInfo = function (repoInfo, languages, pages) {
+  repoDataElement.innerHTML = "";
+  repoDataElement.classList.remove("hide");
+  repoElement.classList.add("hide");
+  backRepoButton.classList.remove("hide");
+  const div = document.createElement("div");
+  const displayHTML =
+      `
+        <h3> Name: ${repoInfo.name}</h3>
+        <p>Description: ${repoInfo.description}</p>
+        <p>Default Branch: ${repoInfo.default_branch}</p>
+        <p>Languages: ${languages.join(", ")}</p>
+        <a class="visit" href="${repoInfo.html_url}" target="_blank" rel="noreferrer noopener">View Repo on GitHub!</a>
+      `;
+  if (pages == true) {
+    div.innerHTML = displayHTML + `
+    <a class="visit" href="https://${socialMediaData.github.link}.github.io/${repoInfo.name}" target="_blank" rel="noreferrer noopener">View the live site!</a>
+    `;
+  }
+  else {
+    div.innerHTML = displayHTML;
+  }
+  repoDataElement.append(div);
+};
+
+backRepoButton.addEventListener("click", function() {
+  repoDataElement.classList.add("hide");
+  repoElement.classList.remove("hide");
+  backRepoButton.classList.add("hide");
+});
+
+filterInput.addEventListener("input", function(e) {
+  const input = e.target.value;
+  const lowerInput = input.toLowerCase();
+  const repos = document.querySelectorAll(".repo");
+  for (const repo of repos) {
+    const repoLower = repo.innerText.toLowerCase();
+    if (repoLower.includes(lowerInput)) {
+      repo.classList.remove("hide");
+    }
+    else {
+      repo.classList.add("hide");
+    }
+  }
+});
+
+
+
+///Want to mak it Search by language
