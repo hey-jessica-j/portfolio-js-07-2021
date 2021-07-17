@@ -14,15 +14,18 @@ let workSection = document.getElementById("work-section");
 //          Data Sets - that can be changed
 // ------------------------------
 // General
-let personalInfo = {
+let personalInfoData = {
   name:"Jessica Jennings",
   city: "Baltimore",
   state: "Maryland",
-  email: "hellojessicajennings@gmail.com",
-  github: "hey-jessica-j",
-  linkedin: "",
-  codePen: "",
-  codeSandbox: ""
+};
+
+let socialMediaData = {
+  email: {link: "hellojessicajennings@gmail.com", img:""},
+  github: {link: "hey-jessica-j", img: ""},
+  linkedIn: {link: "", img: ""},
+  codePen: {link: "", img: ""},
+  codeSandbox: {link: "", img: ""}
 };
 
 //Main Document Data
@@ -35,14 +38,14 @@ let aboutData = {
 };
 
 let schoolData = [
-    {school: "Skillcrush", date: "10/2020 - Present", course: "<span>Front end Development and Python</span>"},
+    {school: "Skillcrush", date: "10/2020 - Present", course: '<span>Front end Development and Python</span>'},
     {school: "University of Maryland University College", date: "04/2018 - 05/2020", course: "Masters in Cybersecurity Technology"},
     {school: "Notre Dame of Maryland University", date: "08/2011 - 05/2015", course: "Bachelors of Mathematics"}
 ];
 
 let  workData = [
   {title:"Morgan Stanley", date:"07/2017 - Present",
-  description: ["Started a <span>CTF (Capture the Flag) beginners blog</span> via the Baltimore Women in Technology group with other CTF enthusiasts.", "Reviewed client verification documents quickly while maintaining an average of 99% quality.", "Conduct reports for managers to audit accounts and assign validation points.", "<span>Worked with branches</span> to understand their needs and submit those needs to the correct parties to get solutions."
+  description: ['Started a <span>CTF (Capture the Flag) beginners blog</span> via the Baltimore Women in Technology group with other CTF enthusiasts.', "Reviewed client verification documents quickly while maintaining an average of 99% quality.", "Conduct reports for managers to audit accounts and assign validation points.", "<span>Worked with branches</span> to understand their needs and submit those needs to the correct parties to get solutions."
     ]}
 ];
 
@@ -55,7 +58,11 @@ let  languagesData = [
     {language: "C++", color:"#388697", percentage: 30}
 ];
 
-let skillData = ["Linux", "Windows", "Github", "REST API", "JSON", "Burpsuite", "Dir BUster", "WIreshark", "MS Office", "Photoshop", "Adobe Illustator", "Teamplayer", "Communication", "Determination", "Self-starter", "Critical-Thinker", "Detail-Oriented"];
+let skillData = ["Linux", "Windows", '<span>Github</span>', "Version Control", "REST API", "JSON",
+                "Burpsuite", "Dir Buster", "Wireshark", "MS Office", "Photoshop", "Adobe Illustator",
+                "Teamplayer", "Communication", "Determination", '<span>Self-starter</span>', "Self-Taught",
+                "Critical-Thinker", "Detail-Oriented", "<span>Ready To Learn</span>"];
+
 
 let myWorkData = {}
 
@@ -209,7 +216,7 @@ function addAboutInfo(aboutData, element) {
       <div class= "about-picture-section right">
         <img src= "${aboutData.image}" />
       </div>
-      <div class="about-text three-fourth left">
+      <div class="about-text ">
         ${p}
       </div>
     </div>
@@ -228,7 +235,7 @@ function addSchoolResumeInfo(schoolData, element) {
   let i=0;
   let title = document.createElement("div");
   let hr = document.createElement("hr");
-  title.classList.add("school-title");
+  title.classList.add("resume-sub-title");
   title.innerHTML = '<h2 class="underline">Education</h2>';
   element.append(title);
   element.append(hr);
@@ -242,7 +249,7 @@ function addSchoolResumeInfo(schoolData, element) {
       </div>
       <div class="school-data one-half left">
         <p> ${schoolData[i].date}</p>
-        <p>${schoolData[i].school} </p>
+        <p class="school-name">${schoolData[i].school} </p>
       </div>
     </div>
     <hr>
@@ -260,7 +267,7 @@ function addWorkResumeInfo(workData, element) {
   let i=0;
   let j=0;
   let title = document.createElement("div");
-  title.classList.add("job-title");
+  title.classList.add("resume-sub-title");
   title.innerHTML = '<h2 class="underline">Work Eperience</h2>';
   element.append(title);
 
@@ -290,12 +297,12 @@ addWorkResumeInfo(workData, resumeContentSection);
 
 
 
-//Adds skill info to document
+//Adds language info to document
 
 function addLaguagesResumeInfo(languagesData, element) {
   let i=0;
   let title = document.createElement("div");
-  title.classList.add("job-title");
+  title.classList.add("resume-sub-title");
   title.innerHTML = '<h2 class="underline">Languages</h2>';
   element.append(title);
   while ( i < languagesData.length) {
@@ -317,6 +324,25 @@ function addLaguagesResumeInfo(languagesData, element) {
 };
 
 addLaguagesResumeInfo(languagesData, resumeContentSection);
+
+
+//Adds skills data to document
+
+function addSkillsResumeInfo(skillData, element) {
+  let title = document.createElement("div");
+  title.classList.add("resume-sub-title");
+  title.innerHTML = '<h2 class="underline">Skills</h2>';
+  element.append(title);
+  let div = document.createElement("div");
+  div.classList.add("skills-article")
+  let article = "";
+  function addSkill(value) {article = article + "<article> <p>" + value + " </p> </article>"};
+  skillData.forEach(addSkill);
+  div.innerHTML = `${article}`
+  element.append(div);
+};
+
+addSkillsResumeInfo(skillData, resumeContentSection);
 
 
 

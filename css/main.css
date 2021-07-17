@@ -41,17 +41,26 @@ main text -
   opacity: 0;
 }
 
+@keyframes goDown {
+  0%{transform: translateY(-15px);}
+  100%{transform: translateY(0);}
+}
+
+nav a:hover {
+  animation: goDown 1s 1;
+}
+
 @keyframes colorRotate {
-  from {color: white; font-size: 4em}
-  12% {color:red}
+  from {color: white;}
+  12% {color:red;}
   24% {color: orange;}
   36% {color: yellow;}
-  48% {color: green; font-size: 4.3em}
+  48% {color: green;}
   60% {color: blue;}
   72% {color: indigo;}
   84% {color: violet;}
   96% {color: red;}
-  100% {color: white; font-size: 4em }
+  100% {color: white;}
 }
 
 .wave h1:hover {
@@ -81,13 +90,28 @@ main text -
   100% { transform: translate(15%, 0%);}
 }
 
+
 .language-article div:hover {
-  animation: slide .75s;
+  animation: slide ease .75s;
 }
 
+@keyframes pushPull {
+  0% {transform: translateX(-10px);}
+  10% {transform: translateX(10px);}
+  20%{transform: translateX(0px);}
+  30% {transform: translateX(-20px);}
+  40% {transform: translateX(20px);}
+  50% {transform: translateX(-20px);}
+  60% {transform: translateX(0px);}
+  70% {transform: translateX(-10px);}
+  80% {transform: translateX(20px);}
+  90% {transform: translateX(-10px);}
+  100% {transform: translateX(0px);}
+}
 
-
-
+.school-name:hover {
+  animation: pushPull 1.5s infinite;
+}
 
 
 /******************************************/
@@ -164,10 +188,6 @@ main {
   top: 0;
   width: 100%
 }
-.sticky + main {
-
-
-}
 
 /*************************************************/
 /*************     Navigation     ****************/
@@ -195,6 +215,7 @@ nav li {
 nav a {
   text-decoration: none;
   color: white;
+
 }
 
 nav a::after {
@@ -293,13 +314,11 @@ main h2 {
 }
 
 .about-content {
-  display: flex;
-  flex: row wrap;
   width: 80%;
   align-items: center;
   margin: auto;
   padding: auto 50px;
-  height: 70vh;
+  min-height: 50vh;
   color: white;
   line-height: 1.5;
 }
@@ -308,7 +327,6 @@ main h2 {
   width: 75%;
   margin: 50px;
 }
-
 
 /* Resume */
 #resume-section {
@@ -327,6 +345,17 @@ main h2 {
 
 #resume-section span {
   background-color: #00ff00;
+  transition: all .9s
+}
+
+#resume-section span:hover {
+  background-color: #D68FD6;
+  padding: 25px;
+}
+
+.border {
+  border: #black 5px solid;
+  border-radius: 0 15 0 30;
 }
 
 .resume-buttons{
@@ -342,8 +371,7 @@ main h2 {
   width: 30%;
 }
 
-.school-title,
-.job-title {
+.resume-sub-title {
   display: flex;
   flex-wrap: no-wrap;
   font-family: 'Cabin Sketch', cursive;
@@ -372,9 +400,6 @@ main h2 {
 .language-article{
   margin: 10px auto;
 }
-.bar{
-  margin: 15px auto;
-}
 
 .language-text {
   text-align: right;
@@ -386,8 +411,35 @@ main h2 {
   color: white;
 }
 
+.skills-article {
+ display: flex ;
+ flex-wrap: wrap ;
+ width: 100%;
+ justify-content: center
+}
+
+.skills-article article {
+  transition: font-size .5s;
+}
+
+.skills-article article:hover {
+  font-size: 1.4em
+}
+
+.skills-article p {
+  margin: 20px 33px;
+}
+
+
 /* Work */
 
+#work-section {
+
+}
+
+#work-section h1 {
+  color: #D68FD6;
+}
 
 
 /* Contact */
@@ -401,7 +453,7 @@ main h2 {
 /**************    Tablet   ***************/
 /******************************************/
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 767px) {
   body {
     font-size: 16px;
   }
@@ -421,6 +473,26 @@ main h2 {
 
 
   /************  About  ************/
+
+  #about-section {
+
+    }
+
+    .about-content {
+      display: flex;
+      flex: row wrap;
+      min
+
+    }
+
+    .about-content img {
+
+    }
+
+    .about-text {
+      text-align: left;
+      width: 90%
+    }
 
 
   /************ Resume ************/
@@ -457,6 +529,7 @@ main h2 {
 
 
 /************ About ************/
+
 
 /************ Resume ************/
 
