@@ -9,15 +9,14 @@ const resumeSection = document.getElementById("resume-section");
 const resumeShowButton = document.getElementById("resumeContentButton");
 const resumeContentSection = document.querySelector(".resume-content");
 const workSection = document.getElementById("work-section");
-const workListElement = document.querySelector(".work-list");
-const repoElement = document.querySelector(".repos");
-const repoDataElement = document.querySelector(".repo-data");
-const backRepoButton = document.querySelector(".view-repos");
-const filterInput = document.querySelector(".filter-repos");
+const workContentElement = document.querySelector(".work-content");
+const workPieceElement = document.querySelector(".work-piece");
+const workPctureElement = document.querySelectorAll(".work-picture");
+const contactSection = document.getElementById("contact-section");
 
-// ------------------------------
+// -------------------------------------------------------
 //          Data Sets - that can be changed
-// ------------------------------
+// -------------------------------------------------------
 // General
 let personalInfoData = {
   name:"Jessica Jennings",
@@ -26,11 +25,11 @@ let personalInfoData = {
 };
 
 let socialMediaData = {
-  email: {link: "hellojessicajennings@gmail.com", img:""},
-  github: {link: "hey-jessica-j", img: ""},
-  linkedIn: {link: "", img: ""},
-  codePen: {link: "", img: ""},
-  codeSandbox: {link: "", img: ""}
+  email: {link: "hellojessicajennings@gmail.com", img:"email-icon.png"},
+  github: {link: "hey-jessica-j", img: "github-icon.png"},
+  linkedIn: {link: "jessica-jennings-48a64baa", img: "linkedin-icon.png"},
+  replit: {link: "@heyJessicaJ", img: "replit-icon.png"},
+  codeSandbox: {link: "hey-jessica-j", img: "codesandbox-logo.png"}
 };
 
 //Main Document Data
@@ -69,7 +68,26 @@ let skillData = ["Linux", "Windows", '<span>Github</span>', "Version Control", "
                 "Critical-Thinker", "Detail-Oriented", "<span>Ready To Learn</span>"];
 
 
-let myWorkData = {}
+let projectData = [
+  {project: "Unplugged Landing Page", languages: "HTTP CSS", img: "",
+    githubLink: "https://github.com/hey-jessica-j/unplugged-sample-project", websiteLink: "https://hey-jessica-j.github.io/unplugged-sample-project/",
+    description: ""},
+  {project: "Guess The Word", languages: "HTTP CSS Javacript", img: "Guess-the-word.png",
+    githubLink: "https://github.com/hey-jessica-j/guess-the-word", websiteLink: "https://hey-jessica-j.github.io/guess-the-word/",
+    description: ""},
+  {project: "Color Changer", languages: "HTTP CSS Javascript", img: "color-changer.png",
+    githubLink: "https://github.com/hey-jessica-j/buttons-revamped", websiteLink: "https://hey-jessica-j.github.io/buttons-revamped/",
+    description: ""},
+  {project: "LOL Cat Clock", languages: "HTTP CSS Javascript", img: "lol-clock.png",
+    githubLink: "https://github.com/hey-jessica-j/lolcatclock", websiteLink: "https://hey-jessica-j.github.io/lolcatclock/",
+    description: ""},
+  {project: "Hangman App", languages: "Python", img: "hangman.png",
+    githubLink: "", websiteLink: "https://replit.com/@heyJessicaJ/Hangman-app",
+    description: ""},
+  {project: "Github Reository", languages: "HTTP CSS Javascript", img: "",
+    githubLink: "https://github.com/hey-jessica-j/github-repo-gallery", websiteLink: "https://hey-jessica-j.github.io/github-repo-gallery/",
+    description: ""}
+];
 
 //Matrix Background
 
@@ -226,7 +244,7 @@ function addAboutInfo(aboutData, element) {
       </div>
     </div>
 
-    `
+    `;
     element.append(about);
 };
 addAboutInfo(aboutData, aboutSection);
@@ -365,99 +383,62 @@ function toggleShowResume(element) {
 
 
 // -------------------------------
-//             RMy Work Section
+//             My Work Section
 // -------------------------------
 
-//Fetch and display user data
-const githubRepoData = async function() {
-  const fetchRepos = await fetch(`https://api.github.com/users/${socialMediaData.github.link}/repos?sort=updates&per_page=100`);
-  const repoData = await fetchRepos.json();
-  //console.log(repoData);
-  displayRepoData(repoData, workListElement);
-};
-
-githubRepoData();
-
-const displayRepoData = async function (repos, ulElement) {
-  filterInput.classList.remove("hide");
-  for (repo of repos) {
-    const li = document.createElement("li");
-    li.classList.add("repo");
-    li.innerHTML = `<h3>${repo.name}</h3>`;
-    ulElement.append(li);
-  }
-};
-
-//fetches data of repo on click
-workListElement.addEventListener("click", function(e) {
-  if (e.target.matches("h3")) {
-    const repoName = e.target.innerText;
-    repoData(repoName);
-    console.log(repoName);
-  }
-});
-
-const repoData = async function(repoName) {
-  const fetchRepoData = await fetch(`https://api.github.com/repos/${socialMediaData.github.link}/${repoName}`);
-  const repoInfo = await fetchRepoData.json();
-  const fetchLanguages = await fetch(repoInfo.languages_url);
-  const languageData = await fetchLanguages.json();
-//Gets languages used
-  const languages = [];
-  for (const lang in languageData) {
-    languages.push(lang);
-  };
-//Getpages URL
-  const pages = repoInfo.has_pages;
-    displayRepoInfo(repoInfo, languages, pages);
-};
-
-const displayRepoInfo = function (repoInfo, languages, pages) {
-  repoDataElement.innerHTML = "";
-  repoDataElement.classList.remove("hide");
-  repoElement.classList.add("hide");
-  backRepoButton.classList.remove("hide");
-  const div = document.createElement("div");
-  const displayHTML =
+function addWorkDataInfo (projectData, element) {
+  let i=0;
+  let div = document.createElement("div");
+  div.classList.add("work-content");
+  while ( i < projectData.length) {
+    let article = document.createElement("article");
+    article.classList.add("work-piece");
+    article.innerHTML =
       `
-        <h3> Name: ${repoInfo.name}</h3>
-        <p>Description: ${repoInfo.description}</p>
-        <p>Default Branch: ${repoInfo.default_branch}</p>
-        <p>Languages: ${languages.join(", ")}</p>
-        <a class="visit" href="${repoInfo.html_url}" target="_blank" rel="noreferrer noopener">View Repo on GitHub!</a>
-      `;
-  if (pages == true) {
-    div.innerHTML = displayHTML + `
-    <a class="visit" href="https://${socialMediaData.github.link}.github.io/${repoInfo.name}" target="_blank" rel="noreferrer noopener">View the live site!</a>
-    `;
-  }
-  else {
-    div.innerHTML = displayHTML;
-  }
-  repoDataElement.append(div);
+        <h3>${projectData[i].project}</h3>
+        <img class="work-picture" src = "./img/${projectData[i].img}" />
+        <p class="work-text hide">Languages: ${projectData[i].languages}</p>
+        <p class="work-text hide">${projectData[i].description}</p>
+        <button class="get-code hide" onclick="window.location.href ='${projectData[i].githubLink}'">See the Code</button>
+        <button class="get-website hide" onclick="window.location.href ='${projectData[i].websiteLink}'">View the Live Site</button>
+      `
+      div.append(article);
+      i++;
+    }
+    element.append(div);
 };
 
-backRepoButton.addEventListener("click", function() {
-  repoDataElement.classList.add("hide");
-  repoElement.classList.remove("hide");
-  backRepoButton.classList.add("hide");
-});
+addWorkDataInfo(projectData, workSection);
 
-filterInput.addEventListener("input", function(e) {
-  const input = e.target.value;
-  const lowerInput = input.toLowerCase();
-  const repos = document.querySelectorAll(".repo");
-  for (const repo of repos) {
-    const repoLower = repo.innerText.toLowerCase();
-    if (repoLower.includes(lowerInput)) {
-      repo.classList.remove("hide");
-    }
-    else {
-      repo.classList.add("hide");
-    }
-  }
+
+
+workPctureElement.addEventListener("mouseover", function(event) {
+
+
 });
 
 
+///Want to mak it Search by languages
+//Myabe even just link to gitub repo projet and have my eatured projects on my site4
 
-///Want to mak it Search by language
+// -------------------------------
+//             Contact Section
+// -------------------------------
+
+
+function addContactIconInfo (socialMediaData, element) {
+  let div = document.createElement("div");
+  div.classList.add("contact-content");
+  div.innerHTML =
+    `
+    <a href = "mailto:${socialMediaData.email.link}" ><img src="./img/${socialMediaData.email.img}"></a>
+    <a href= "https://www.github.com/${socialMediaData.github.link}" target="_blank" ><img src="./img/${socialMediaData.github.img}"></a>
+    <a href = "https://www.linkedin.com/in/${socialMediaData.linkedIn.link}" target="_blank" ><img src="./img/${socialMediaData.linkedIn.img}"></a>
+    <a href="https://repl.it/${socialMediaData.replit.link}" target="_blank" ><img src="./img/${socialMediaData.replit.img}"></a>
+    <a href="https://www.codesandbox.io/u/${socialMediaData.codeSandbox.link}" target="_blank" ><img src="./img/${socialMediaData.codeSandbox.img}"></a>
+
+    `
+    element.append(div);
+};
+
+addContactIconInfo(socialMediaData, contactSection);

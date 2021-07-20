@@ -434,47 +434,57 @@ main h2 {
 
 #work-section {
   width: 90%;
+  margin: auto;
 }
 
 #work-section h1 {
   color: #D68FD6;
 }
 
-.work-list {
-  width: 100%;
+.work-content {
+  width: 90%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  margin: auto;
 }
 
-.repos input {
-  display: flex;
+.work-piece {
+  display: flex row;
   flex-wrap: wrap;
   justify-content: center;
-  width: 50%;
-  border: black 1px solid;
-  text-align:center;
+  width: 30%;
+  min-height: 25vh;
+  align-items: flex-start;
   margin: auto;
-  padding: 25px;
-  font-size: 1em;
-  font-family: 'Orbitron', sans-serif;
 }
 
-.work-list li {
-  width: 25%;
-  margin: 1em 20px;
-  border: 1px solid #D68FD6;
-  border-radius: 5px 40px 5px;
-  padding: 0.2em;
-  list-style-type: none;
+.work-piece h3 {
+  width: 100%;
   text-align: center;
+  font-size: 1em;
+}
+
+.work-piece img {
+  max-width: 60%;
+  align-items: flex-start;
 }
 
 
-.work-list li:hover {
-    background-color: #D68FD6;
-    animation: colorRotate 3s infinite;
+
+.work-piece p {
+  width: 90%;
+  text-align: left;
+  font-size: 0.8em;
+}
+
+.get-code {
+
+}
+
+.get-website {
+
 }
 
 /* Contact */
@@ -482,6 +492,18 @@ main h2 {
 #contact-section {
   min-height: 100vh;
 }
+
+.contact-content {
+  width: 90%;
+  text-align: center;
+  margin: auto;
+}
+
+.contact-content img {
+  width: 3%;
+  padding: 1em;
+}
+
 
 
 /******************************************/
